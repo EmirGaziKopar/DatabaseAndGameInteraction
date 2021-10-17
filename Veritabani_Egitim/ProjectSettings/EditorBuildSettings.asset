@@ -11,16 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameEkrani.unity
     guid: 750879f0a3024074aa5bb458eadf3a0d
-  - enabled: 1
-    path: Assets/Scenes/Leveller/KilitSistemi.unity
-    guid: 9265afe92ee59424b9d444fa7b987971
-  - enabled: 1
-    path: Assets/Scenes/Leveller/Level_1.unity
-    guid: ebc447302bd925a4a817b76ad6114705
-  - enabled: 1
-    path: Assets/Scenes/Leveller/Level_2.unity
-    guid: de05c51915721214f83d9bfe577bb33d
-  - enabled: 1
-    path: Assets/Scenes/Leveller/Level_3.unity
-    guid: dbbc759ba4b76c94aa67f7f7d8b5a273
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

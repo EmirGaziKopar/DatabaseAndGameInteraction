@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class EkrandakiButonlar : MonoBehaviour
 {
     ProfilBilgilerim profilBilgilerim;
@@ -26,7 +27,7 @@ public class EkrandakiButonlar : MonoBehaviour
     }
     public void geri()
     {
-        GameObject.Find("SahneManager").GetComponent<SahneGecis>().sahneyiDegistir(0);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
   

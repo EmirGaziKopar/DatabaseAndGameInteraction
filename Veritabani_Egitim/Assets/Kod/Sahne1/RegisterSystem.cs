@@ -53,6 +53,7 @@ public class RegisterSystem : MonoBehaviour
             else
             {
                 StartCoroutine(pK_Script.hataPanel("Şifreler Eşleşmiyor!"));
+                
             }
         }
     }
@@ -62,23 +63,35 @@ public class RegisterSystem : MonoBehaviour
     IEnumerator kayitOl()
     {
         WWWForm form = new WWWForm();
-        form.AddField("unity", "kayitOlma");
-        form.AddField("kullaniciAdi", kullaniciAdi_IF.text); //selim
+
+        form.AddField("unity", "kayitOlma"); //php ekranında $_POST['unity']==kayitOlma ise diye kontrol kullanıcı bu işlemi yaptığı taktirde aşağıdaki girdileri yollama işlemini php tarafında gerçekleştireceğiz.
+        form.AddField("kullaniciAdi",kullaniciAdi_IF.text);
         form.AddField("sifre", sifre_IF.text);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/unity_DB/userRegister.php", form))
-        {
-            yield return www.SendWebRequest();
+        
+        //Burada bulunan URI'a POST işlemi yapılsın
+        UnityWebRequest www = UnityWebRequest.Post("http://localhost/game/veritabani/baglanti.php", form); //yukaridaki veriler buradaki uri'a gönderilecek
+        yield return www.SendWebRequest();
 
-            if (www.isNetworkError || www.isHttpError)
+        if (www.result != UnityWebRequest.Result.Success) //Veriler başarılı bir şekilde gönderildi 
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            /*if(www.downloadHandler.text == "tebrikler")
             {
-                Debug.Log(www.error);
+                StartCoroutine(pK_Script.hataPanel(www.downloadHandler.text));
             }
             else
             {
-                Debug.Log("Sorgu Sonucu:"+www.downloadHandler.text);
-                StartCoroutine(pK_Script.hataPanel(www.downloadHandler.text));
+                //StartCoroutine(pK_Script.hataPanel(www.downloadHandler.text)); //tuhaf bir hata mesajı yazdırdığı için bunu kapattım
+                StartCoroutine(pK_Script.hataPanel("Bu isim zaten kullanılıyor"));
             }
+            Debug.Log("Sorgu Sonucu : "+www.downloadHandler.text); //+www.downloadHandler.text php ekranında donen herhangi birşey varsa onu basaca
+             //php'den echo ile dönen text degeri */
+
+            StartCoroutine(pK_Script.hataPanel(www.downloadHandler.text));
         }
     }
 
